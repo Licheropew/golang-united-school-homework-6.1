@@ -88,11 +88,14 @@ func (b *box) RemoveAllCircles() error {
 			circleIndex = append(circleIndex, i)
 		}
 	}
-	for _, i := range circleIndex {
-		b.shapes = append(b.shapes[:i], b.shapes[i+1:]...)
-	}
 	if len(circleIndex) == 0 {
 		return errors.New("no circles in the list")
+	}
+	x := 0
+	for _, i := range circleIndex {
+		i -= x
+		b.shapes = append(b.shapes[:i], b.shapes[i+1:]...)
+		x++
 	}
 	return nil
 }
