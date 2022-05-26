@@ -84,7 +84,7 @@ func (b *box) RemoveAllCircles() error {
 	circleIndex := make([]int, 0)
 	for i, c := range b.shapes {
 		switch c.(type) {
-		case Circle:
+		case *Circle:
 			circleIndex = append(circleIndex, i)
 		}
 	}
